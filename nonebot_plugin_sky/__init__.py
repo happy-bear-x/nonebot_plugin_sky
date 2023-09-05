@@ -29,16 +29,16 @@ from .utils_.notice_board import *
 from .config.travelling_cache import *
 from .utils_.travel_cycle import is_exist, NormalTravel, bot_tips
 
-Menu = on_command("Sky", aliases=get_cmd_alias("sky_menu"))
-DailyCN = on_command("sky -cn", aliases=get_cmd_alias("sky_cn"))
-DailyIN = on_command("sky -in", aliases=get_cmd_alias("sky_in"))
-TravellingCN = on_command("travel -cn", aliases=get_cmd_alias("travel_cn"))
-TravellingIN = on_command("travel -in", aliases=get_cmd_alias("travel_in"))
-RemainCN = on_command("remain -cn", aliases=get_cmd_alias("remain_cn"))
-RemainIN = on_command("remain -in", aliases=get_cmd_alias("remain_in"))
-Queue = on_command("queue", aliases=get_cmd_alias("sky_queue"))
-Notice = on_command("notice", aliases=get_cmd_alias("sky_notice"))
-Clear = on_command("sky_clear_cache", aliases=get_cmd_alias("sky_clear_cache"), permission=SUPERUSER)
+Menu = on_command("Sky", aliases=get_cmd_alias("sky_menu"), block=True)
+DailyCN = on_command("sky -cn", aliases=get_cmd_alias("sky_cn"), block=True)
+DailyIN = on_command("sky -in", aliases=get_cmd_alias("sky_in"), block=True)
+TravellingCN = on_command("travel -cn", aliases=get_cmd_alias("travel_cn"), block=True)
+TravellingIN = on_command("travel -in", aliases=get_cmd_alias("travel_in"), block=True)
+RemainCN = on_command("remain -cn", aliases=get_cmd_alias("remain_cn"), block=True)
+RemainIN = on_command("remain -in", aliases=get_cmd_alias("remain_in"), block=True)
+Queue = on_command("queue", aliases=get_cmd_alias("sky_queue"), block=True)
+Notice = on_command("notice", aliases=get_cmd_alias("sky_notice"), block=True)
+Clear = on_command("sky_clear_cache", aliases=get_cmd_alias("sky_clear_cache"), permission=SUPERUSER, block=True)
 
 
 @DailyCN.handle()
@@ -286,7 +286,6 @@ __plugin_meta__ = PluginMetadata(
     [命令起始符]-[命令] -> 执行数据包命令
     """,
     config=Config,
-    type='application',
     extra={
         "author": "Kaguya姬辉夜",
         "qq": "1435608435",

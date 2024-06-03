@@ -65,14 +65,17 @@ class Travelling:
         if overhead == 'invalid':
             return '超过未登录能获取页数的最大值：2'
         if overhead:
-            pic_infos = overhead.get('pic_infos')
-            if pic_infos:
-                for pic in pic_infos:
-                    large_url = pic_infos[pic]['largest']['url']
-                    release_time = status.get('current_release').replace(' 12:00:00', '')
-                    path = await weibo_image(large_url, release_time)
-                    results = path
-            else:
+            try:
+                pic_infos = overhead.get('pic_infos')
+                if pic_infos:
+                    for pic in pic_infos:
+                        large_url = pic_infos[pic]['largest']['url']
+                        release_time = status.get('current_release').replace(' 12:00:00', '')
+                        path = await weibo_image(large_url, release_time)
+                        results = path
+                else:
+                    results = None
+            except:
                 results = None
         else:
             notice = '没有找到国服复刻先祖的数据'
